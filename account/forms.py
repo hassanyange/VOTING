@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 
 
+
 class FormSettings(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(FormSettings, self).__init__(*args, **kwargs)
@@ -59,3 +60,4 @@ class CustomUserForm(FormSettings):
     class Meta:
         model = CustomUser
         fields = ['last_name', 'first_name', 'email', 'password', ]
+

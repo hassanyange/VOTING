@@ -1,16 +1,72 @@
-{% extends "voting/base.html" %}
+{% extends "voting/base.html" %} 
 {% block content %}
+{% load static %}
 
-    <div class="login-box">
-        <div class="login-logo">
-            <b>Online Voting System</b>
+<style>
+.navbar {
+    background-color: #3e30ea;
+}
+
+.navbar-brand-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.middle-text {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.flowing-text {
+    display: inline-block;
+    animation: flowing-text-animation 5s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes flowing-text-animation {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Reset the width of the container to prevent the form from extending to the full width of the page */
+.container {
+    width: auto;
+}
+</style>
+
+<nav class="navbar navbar-default" role="navigation" style="background-color: #3e30ea;">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'account_login' %}">
+                <div class="navbar-brand-text">
+                    <span class="middle-text ">WELCOME TO UDSM STAFF ONLINE VOTING SYSTEM</span>
+                </div>
+            </a>
         </div>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="login-box">
         <div class="login-box-body">
-            <!-- <p class="login-box-msg">Sign in to start your session</p> -->
-
             <form action="{% url 'account_login' %}" method="POST">
                 {% csrf_token %}
+                <div class="form-group has-feedback">
+                    <img src="{% static 'images/login.png' %}" alt="login image" class="img-responsive center-block">
+                </div>
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="email" placeholder="Email" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -19,18 +75,27 @@
                     <input type="password" class="form-control" name="password" placeholder="Password" required>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+
+                <div class="form-group has-feedback">
+                    <div class="g-recaptcha" data-sitekey="6LcJD4MlAAAAAGtP1yYJexnY2dAwWsdD4pDVjs5N" required></div>
+                </div>
+
                 <div class="row">
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-success btn-block btn-flat" name="login"><i
-                                class="fa fa-sign-in"></i> Log In</button>
+                    <div class="col-xs-4 col-xs-offset-4">
+                        <button type="submit" class="btn btn-success btn-block" name="login">
+                            <i class="fa fa-sign-in"></i> Log In
+                        </button>
                     </div>
-                    <div class="pull-right col-xs-4">
+                    <!-- <div class="pull-right col-xs-4">
                         <a  class="btn btn-warning btn-block btn-flat" href="{% url 'account_register' %}"><i class="fa fa-user-plus"></i> Register</a>
-                    </div>
+                    </div> -->
                 </div>
             </form>
         </div>
-            </div>
+    </div>
+</div>
+{% endblock content %}
 
- 
-{% endblock content %} 
+
+
+

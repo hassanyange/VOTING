@@ -23,7 +23,7 @@ def account_login(request):
             if user.user_type == '1':
                 return redirect(reverse("adminDashboard"))
             else:
-                return redirect(reverse("voterDashboard"))
+                return redirect(reverse("department_selection"))
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
@@ -63,3 +63,5 @@ def account_logout(request):
             request, "You need to be logged in to perform this action")
 
     return redirect(reverse("account_login"))
+
+

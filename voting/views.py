@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.contrib import messages
 from django.conf import settings
 from django.http import JsonResponse
+
 import requests
 import json
 # Create your views here.
@@ -16,6 +17,7 @@ def index(request):
         return account_login(request)
     context = {}
     # return render(request, "voting/login.html", context)
+
 
 
 def generate_ballot(display_controls=False):
@@ -401,3 +403,19 @@ def submit_ballot(request):
         voter.save()
         messages.success(request, "Thanks for voting")
         return redirect(reverse('voterDashboard'))
+    
+
+
+def department_selection(request):
+    # Logic for rendering the department selection page
+    # This view will handle the logic for rendering the department selection page
+    # and processing the form data after submission
+    if request.method == 'POST':
+        # Retrieve form data and process it
+        department = request.POST.get('department')
+        college = request.POST.get('college')
+
+        return redirect('voterDashboard ')
+
+    return render(request, 'voting/voter/department_selection.html')
+

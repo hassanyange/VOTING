@@ -3,6 +3,7 @@ from .models import *
 from account.forms import FormSettings
 
 
+
 class VoterForm(FormSettings):
     class Meta:
         model = Voter
@@ -19,3 +20,6 @@ class CandidateForm(FormSettings):
     class Meta:
         model = Candidate
         fields = ['fullname', 'bio', 'position', 'photo']
+
+
+
