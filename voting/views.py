@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, reverse
 from account.views import account_login
-from .models import Position, Candidate, Voter, Votes
+from .models import Position, Candidate, Voter, Votes, College, Department
 from django.http import JsonResponse
 from django.utils.text import slugify
 from django.contrib import messages
 from django.conf import settings
-from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+
 
 import requests
 import json
@@ -406,16 +407,36 @@ def submit_ballot(request):
     
 
 
+
+# def department_selection(request):
+#     if request.method == 'POST':
+#         department = request.POST.get('department')
+#         college = request.POST.get('college')
+
+#         if department and college:
+#             # Process the data as needed, e.g., save to the database
+#             # Redirect to the appropriate page
+#             return redirect('voterDashboard')
+
+#     # Fetch the colleges and departments to be rendered in the template
+#     colleges = College.objects.all()
+#     departments = Department.objects.all()
+from django.shortcuts import render
+from .forms import DepartmentForm
+
 def department_selection(request):
-    # Logic for rendering the department selection page
-    # This view will handle the logic for rendering the department selection page
-    # and processing the form data after submission
+    form = DepartmentForm()
     if request.method == 'POST':
-        # Retrieve form data and process it
-        department = request.POST.get('department')
-        college = request.POST.get('college')
+        form = DepartmentForm(request.POST)
+        if form.is_valid():
+            # Process the form data
+            college = form.cleaned_data['college']
+            department = form.cleaned_data['department']
+            # Do something with college and department objects
+            return redirect('voterDashboard')
 
-        return redirect('voterDashboard ')
+    return render(request, 'voting/voter/department_selection.html', {'form': form})
 
-    return render(request, 'voting/voter/department_selection.html')
+# ADDITIONAL SELECTION OF DEPARTMENT VIEWS
 
+   

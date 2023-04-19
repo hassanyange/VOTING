@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 import json  # Not used
+from itertools import groupby
 from django_renderpdf.views import PDFView
 
 
@@ -391,3 +392,16 @@ def resetVote(request):
     Voter.objects.all().update(voted=False, verified=False, otp=None)
     messages.success(request, "All votes has been reset")
     return redirect(reverse('viewVotes'))
+
+
+
+
+
+
+
+
+
+
+
+# ADDITIONAL IN MAIN ADMINISTRATOR
+

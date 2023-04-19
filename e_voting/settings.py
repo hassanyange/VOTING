@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'voting.apps.VotingConfig',
     'administrator.apps.AdministratorConfig',
-    'captcha'
+    'captcha',
+    
 ]
 
 MIDDLEWARE = [

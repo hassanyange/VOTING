@@ -1,39 +1,66 @@
 {% extends 'root.html' %}
-{% block content %}
-<section class="content">
-    <h1 class="page-header text-center title"><b>Please be carefully on choosing your respective college and department</b></h1>
-    <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <div class="alert alert-danger alert-dismissible" id="alert" style="display:none;">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <span class="message"></span>
-            </div>
 
-            <form method="POST" id="ballotForm" action="{% url 'submit_ballot' %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="college">College:</label>
-                    <select id="college" name="college" class="form-control">
-                        <!-- Render options for college selection based on the selected department -->
-                        <!-- Example: -->
-                        <option value="default">college</option>
-                        <option value="college1">CoICT</option>
-                        <option value="college2">CoET</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="department">Department:</label>
-                    <select id="department" name="department" class="form-control">
-                        <!-- Render options for department selection -->
-                        <!-- Example: -->
-                        <option value="default">Select your department</option>
-                        <option value="department1">ETE</option>
-                        <option value="department2">CSE</option>
-                    </select>
-                </div>
-                <input type="submit" value="Submit" class="btn btn-primary">
-            </form>
+{% block content %}
+
+<div class="container mt-5">
+    <!-- <h1>College and Department Selection</h1>
+    <form method="POST" id="selectionForm" action="{% url 'submit_ballot' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="collegeSelect">Select College:</label>
+            <select class="form-control" id="collegeSelect" name="college">
+                <option value="">--Select College--</option>
+                {% for college in colleges %}
+                    <option value="{{ college.id }}">{{ college.name }}</option>
+                {% endfor %}
+            </select>
         </div>
-    </div>
-</section>
+        <div class="form-group">
+            <label for="departmentSelect">Select Department:</label>
+            <select class="form-control" id="departmentSelect" name="department">
+                <option value="">--Select Department--</option>
+                {% for department in departments %}
+                    <option value="{{ department.id }}">{{ department.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form> -->
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.college.auto_id }}" class="col-form-label">{{ form.college.label_tag }}</label>
+            {{ form.college }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.department.auto_id }}" class="col-form-label">{{ form.department.label_tag }}</label>
+            {{ form.department }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    
+</div>
+<!-- Add this block at the end of your HTML template -->
+<script>
+    function loadDepartments() {
+        const collegeId = $('#id_college').val();
+        $('#id_department').empty();
+        if (collegeId !== '') {
+            $.ajax({
+                url: '/get_departments/',  // Update this URL to match your Django URL pattern
+                data: {
+                    'college_id': collegeId
+                },
+                success: function(data) {
+                    // Add the received options to the department dropdown
+                    $('#id_department').html(data);
+                }
+            });
+        }
+    }
+</script>
+
+
 {% endblock content %}
