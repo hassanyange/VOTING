@@ -1,0 +1,38 @@
+{% extends 'voting/base.html' %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<h2>Election Results</h2>
+{% if results %}
+    {% for position_result in results %}
+        <h3>{{ position_result.position }}</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Candidate</th>
+                    <th>Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate_result in position_result.result %}
+                    <tr>
+                        <td>{{ candidate_result.candidate }}</td>
+                        <td>{{ candidate_result.votes }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% else %}
+    <p>No results available.</p>
+{% endif %}
+{% if Election.objects.get().closed %}
+    <a href="{% url 'download_results' %}" class="btn btn-primary">Download Results</a>
+{% endif %}
+<a href="{% url 'phase_two' %}" class="btn btn-primary">Proceed to Phase Two</a>
+{% endblock %}

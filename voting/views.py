@@ -235,10 +235,10 @@ def verify_otp(request):
     return redirect(reverse('show_ballot'))
 
 
+
 def show_ballot(request):
     if request.user.voter.voted:
-        messages.error(request, "You have voted already")
-        return redirect(reverse('voterDashboard'))
+        return redirect('/next-phase')
     ballot = generate_ballot(display_controls=False)
     context = {
         'ballot': ballot
