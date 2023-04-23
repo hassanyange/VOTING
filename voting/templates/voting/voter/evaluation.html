@@ -1,0 +1,57 @@
+{% extends 'root.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Evaluation Phase</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {% for candidate in candidates %}
+                <div class="card my-4">
+                    <div class="card-header">
+                        <h3>{{ candidate.fullname }}</h3>
+                        <!-- <p class="mb-0">{{ candidate.photo }}</p> -->
+                        <p class="mb-0">{{ candidate.bio }}</p>
+                        <p class="mb-0">{{ candidate.position }}</p>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Attribute</th>
+                                    <th>Rating (1-10)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Leadership Ability</td>
+                                    <td>
+                                        <input type="number" name="leadership_{{ candidate.id }}" min="1" max="10" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Managerial Ability</td>
+                                    <td>
+                                        <input type="number" name="managerial_{{ candidate.id }}" min="1" max="10" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Public Relations Ability</td>
+                                    <td>
+                                        <input type="number" name="public_relations_{{ candidate.id }}" min="1" max="10" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Academic Leadership Ability</td>
+                                    <td>
+                                        <input type="number" name="academic_leadership_{{ candidate.id }}" min="1" max="10" class="form-control">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit Ratings</button>
+        </form>
+    </div>
+{% endblock %}

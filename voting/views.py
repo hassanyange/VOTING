@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from account.views import account_login
-from .models import Position, Candidate, Voter, Votes, College, Department
+from .models import Position, Candidate, Voter, Votes
 from django.http import JsonResponse
 from django.utils.text import slugify
 from django.contrib import messages
@@ -408,35 +408,29 @@ def submit_ballot(request):
 
 
 
-# def department_selection(request):
-#     if request.method == 'POST':
-#         department = request.POST.get('department')
-#         college = request.POST.get('college')
 
-#         if department and college:
-#             # Process the data as needed, e.g., save to the database
-#             # Redirect to the appropriate page
-#             return redirect('voterDashboard')
-
-#     # Fetch the colleges and departments to be rendered in the template
-#     colleges = College.objects.all()
-#     departments = Department.objects.all()
-from django.shortcuts import render
-from .forms import DepartmentForm
-
-def department_selection(request):
-    form = DepartmentForm()
-    if request.method == 'POST':
-        form = DepartmentForm(request.POST)
-        if form.is_valid():
-            # Process the form data
-            college = form.cleaned_data['college']
-            department = form.cleaned_data['department']
-            # Do something with college and department objects
-            return redirect('voterDashboard')
-
-    return render(request, 'voting/voter/department_selection.html', {'form': form})
 
 # ADDITIONAL SELECTION OF DEPARTMENT VIEWS
 
    
+from .models import Candidate
+from .models import EvaluationForm
+
+
+def evaluation_view(request):
+    candidates = Candidate.objects.all()
+    if request.method == 'POST':
+        form = EvaluationForm(request.POST)
+        if form.is_valid():
+            # Process form data and save to database
+            for candidate in candidates:
+                leadership_rating = form.cleaned_data[f'leadership_{candidate.id}']
+                managerial_rating = form.cleaned_data[f'managerial_{candidate.id}']
+                public_relations_rating = form.cleaned_data[f'public_relations_{candidate.id}']
+                academic_leadership_rating = form.cleaned_data[f'academic_leadership_{candidate.id}']
+                # Do something with ratings (e.g. save to CandidateRating model)
+            return HttpResponseRedirect('/thank-you/')
+    else:
+        form = EvaluationForm(candidates)
+    context = {'candidates': candidates, 'form': form}
+    return render(request, 'voting/voter/evaluation.html',context)

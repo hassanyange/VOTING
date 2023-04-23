@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout
 def account_login(request):
     if request.user.is_authenticated:
         if request.user.user_type == '1':
-            return redirect(reverse("adminDashboard"))
+            return redirect(reverse("voterDashboard"))
         else:
             return redirect(reverse("voterDashboard"))
 
@@ -23,7 +23,7 @@ def account_login(request):
             if user.user_type == '1':
                 return redirect(reverse("adminDashboard"))
             else:
-                return redirect(reverse("department_selection"))
+                return redirect(reverse("voterDashboard"))
         else:
             messages.error(request, "Invalid details")
             return redirect("/")

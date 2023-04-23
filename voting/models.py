@@ -1,5 +1,6 @@
 from django.db import models
 from account.models import CustomUser
+from django import forms
 # Create your models here.
 
 
@@ -39,16 +40,13 @@ class Votes(models.Model):
     position = models.ForeignKey(Position, on_delete=models.CASCADE)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
 
-class College(models.Model):
-    name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
-
-
-class Department(models.Model):
-    name = models.CharField(max_length=100)
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
+class EvaluationForm(forms.Form):
+    def __init__(self, candidates, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for candidate in candidates:
+            prefix = f'candidate_{candidate.id}'
+            self.fields[f'{prefix}_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+            self.fields[f'{prefix}_managerial'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+            self.fields[f'{prefix}_public_relations'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+            self.fields[f'{prefix}_academic_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
