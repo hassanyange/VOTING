@@ -14,6 +14,11 @@ class VoterForm(FormSettings):
         fields = ['phone']
 
 
+class AdminForm(FormSettings):
+    class Meta:
+        model = Admin
+        fields = ['phone']
+
 
 
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, redirect
-from voting.models import Voter, Position, Candidate, Votes
+from voting.models import Voter, Position, Candidate, Votes, Admin
 from account.models import CustomUser
 from account.forms import CustomUserForm
 from voting.forms import *
@@ -94,6 +94,7 @@ def dashboard(request):
     positions = Position.objects.all().order_by('priority')
     candidates = Candidate.objects.all()
     voters = Voter.objects.all()
+    Admin_dash = Admin.objects.all()
     voted_voters = Voter.objects.filter(voted=1)
     list_of_candidates = []
     votes_count = []
@@ -116,6 +117,7 @@ def dashboard(request):
         'position_count': positions.count(),
         'candidate_count': candidates.count(),
         'voters_count': voters.count(),
+        'admins_count': Admin_dash.count(),
         'voted_voters_count': voted_voters.count(),
         'positions': positions,
         'chart_data': chart_data,
@@ -404,4 +406,73 @@ def resetVote(request):
 
 
 # ADDITIONAL IN MAIN ADMINISTRATOR
+def admins(request):
+    admin = Admin.objects.all()
+    userForm = CustomUserForm(request.POST or None)
+    adminForm = AdminForm(request.POST or None)
+    context = {
+        'form1': userForm,
+        'form3': adminForm,
+        'admins': admin,
+        'page_title': 'Admin List'
+    }
+    if request.method == 'POST':
+        if userForm.is_valid() and adminForm.is_valid():
+            user = userForm.save(commit=False)
+            admin = adminForm.save(commit=False)
+            admin.admin = user
+            user.save()
+            admin.save()
+            messages.success(request, "New Admin created")
+        else:
+            messages.error(request, "Form validation failed")
+    return render(request, "admin/admin.html", context)
+
+
+def view_admin_by_id(request):
+    admin_id = request.GET.get('id', None)
+    admin = Admin.objects.filter(id=admin_id)
+    context = {}
+    if not admin.exists():
+        context['code'] = 404
+    else:
+        context['code'] = 200
+        voter = voter[0]
+        context['first_name'] = admin.admin.first_name
+        context['last_name'] = admin.admin.last_name
+        context['phone'] = admin.phone
+        context['id'] = admin.id
+        context['email'] = admin.admin.email
+    return JsonResponse(context)
+
+
+
+def updateAdmin(request):
+    if request.method != 'POST':
+        messages.error(request, "Access Denied")
+    try:
+        instance = Admin.objects.get(id=request.POST.get('id'))
+        user = CustomUserForm(request.POST or None, instance=instance.admin)
+        Admin = AdminForm(request.POST or None, instance=instance)
+        user.save()
+        Admin.save()
+        messages.success(request, "Admin's bio updated")
+    except:
+        messages.error(request, "Access To This Resource Denied")
+
+    return redirect(reverse('adminViewAdmins'))
+
+
+def deleteAdmin(request):
+    if request.method != 'POST':
+        messages.error(request, "Access Denied")
+    try:
+        admin = Admin.objects.get(id=request.POST.get('id')).admin
+        admin.delete()
+        messages.success(request, "Admin Has Been Deleted")
+    except:
+        messages.error(request, "Access To This Resource Denied")
+
+    return redirect(reverse('adminViewAdmin'))
+
 

@@ -10,6 +10,13 @@ urlpatterns = [
     path('voters/delete', views.deleteVoter, name='deleteVoter'),
     path('voters/update', views.updateVoter, name="updateVoter"),
 
+        # * Admins
+    path('admins', views.admins, name="adminViewAdmins"),
+    path('admins/view', views.view_admin_by_id, name="viewAdmin"),
+    path('admins/delete', views.deleteAdmin, name='deleteAdmin'),
+    path('admins/update', views.updateAdmin, name="updateAdmin"),
+
+
     # * Position
     path('position/view', views.view_position_by_id, name="viewPosition"),
     path('position/update', views.updatePosition, name="updatePosition"),

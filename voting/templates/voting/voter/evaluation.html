@@ -6,52 +6,572 @@
         <form method="POST">
             {% csrf_token %}
             {% for candidate in candidates %}
-                <div class="card my-4">
-                    <div class="card-header">
-                        <h3>{{ candidate.fullname }}</h3>
-                        <!-- <p class="mb-0">{{ candidate.photo }}</p> -->
-                        <p class="mb-0">{{ candidate.bio }}</p>
-                        <p class="mb-0">{{ candidate.position }}</p>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Attribute</th>
-                                    <th>Rating (1-10)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Leadership Ability</td>
-                                    <td>
-                                        <input type="number" name="leadership_{{ candidate.id }}" min="1" max="10" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Managerial Ability</td>
-                                    <td>
-                                        <input type="number" name="managerial_{{ candidate.id }}" min="1" max="10" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Public Relations Ability</td>
-                                    <td>
-                                        <input type="number" name="public_relations_{{ candidate.id }}" min="1" max="10" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Academic Leadership Ability</td>
-                                    <td>
-                                        <input type="number" name="academic_leadership_{{ candidate.id }}" min="1" max="10" class="form-control">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="card my-4">
+                <div class="card-header text-center" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                  <h4 style="margin-right: 100px;">Name: <b>{{ candidate.fullname }}</b> </h4>
+                  <h4>Position:<b>  {{ candidate.position }} </b></h4>
                 </div>
+                
+                <!-- <div class="card-body">
+                
+                   
+                          <div> 
+                            <h1>Leadership Ability </h1>
+                          
+                             <div>
+                               <label for="knowledge_of_institution">Knowledge of the institution:</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div> 
+                        
+
+
+                          <div>  
+                              <h2>Vision of institution:</h2>   
+                              
+                           <br>
+                           <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                           <label for="knowledge_very_high">Very High</label>
+                           <br>
+                           <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                           <label for="knowledge_high">High</label>
+                           <br>
+                           <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                           <label for="knowledge_neutral">Neutral</label>
+                           <br>
+                           <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                           <label for="knowledge_low">Low</label>
+                           <br>
+                           <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                           <label for="knowledge_very_low">Very Low</label>
+                          </div>
+                          
+                        <div>   
+                            <label for="strategic_ability">Strategic Ability:</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>
+
+                          <br>
+                        
+
+                          <div>  
+                            <label for="creativity_initiative_ability">Creativity, independent thinking, initiative ability:</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>
+
+                           <div> 
+                            <label for="command_of_respect">Command of respect:</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>
+
+                            <div> 
+                                <label for="role_model">Role Model:</label>
+                                <br>
+                                <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                <label for="knowledge_very_high">Very High</label>
+                                <br>
+                                <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                <label for="knowledge_high">High</label>
+                                <br>
+                                <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                <label for="knowledge_neutral">Neutral</label>
+                                <br>
+                                <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                <label for="knowledge_low">Low</label>
+                                <br>
+                                <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                <label for="knowledge_very_low">Very Low</label>
+                              </div> 
+                                  
+
+                                <div> 
+                                    
+                                        <h1>Managerial Ability</h1>
+                                        
+                                            <label for="managerial_{{ candidate.id }}_planning">Planning:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>  
+                                              <br>
+                                          <div>   
+                                            <label for="managerial_{{ candidate.id }}_control_and_monitoring">Control and Monitoring:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>  
+                                          <br> 
+
+                  <div>   </div>
+                                            <label for="managerial_{{ candidate.id }}_coordination">Coordination:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>
+                                  
+                                        <br>
+                                     <div>
+                                            <label for="managerial_{{ candidate.id }}_team_work">Team Work:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                        
+                                            <label for="managerial_{{ candidate.id }}_delegation">Delegation:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>
+                                            <br>
+                                       
+                                          <div> 
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Evaluation:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>
+                                            <br>
+                                            <div> 
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Accountability:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>
+                                    <br>
+                                       <div> 
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Experience:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                          </div>
+                                          <br>
+                                <div> 
+                                         <h1>   Public Relations Ability </h1>
+
+                      
+                                    <br>
+                                              <label for="language">Language:</label>
+                                              <br>
+                                              <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                              <label for="knowledge_very_high">Very High</label>
+                                              <br>
+                                              <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                              <label for="knowledge_high">High</label>
+                                              <br>
+                                              <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                              <label for="knowledge_neutral">Neutral</label>
+                                              <br>
+                                              <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                              <label for="knowledge_low">Low</label>
+                                              <br>
+                                              <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                              <label for="knowledge_very_low">Very Low</label>
+                                            </div>
+                                    <br>
+                                    <div> 
+                                        <label for="personality">Personality:</label>
+                                        <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>    
+                            
+                            <br>
+                            <div>  
+                                                                      <label for="protocol">Protocol:</label>
+                                        <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+
+                                 <br>   
+                                 <div>  
+                                 <div>Respect:</div>      
+                                        <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>
+                                    <br>
+                                    <div> 
+                                        <label for="to sell institution">Ability to sell institution:</label>
+                                        <br>
+                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                            <label for="knowledge_very_high">Very High</label>
+                            <br>
+                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                            <label for="knowledge_high">High</label>
+                            <br>
+                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                            <label for="knowledge_neutral">Neutral</label>
+                            <br>
+                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                            <label for="knowledge_low">Low</label>
+                            <br>
+                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                            <label for="knowledge_very_low">Very Low</label>
+                          </div>
+
+                                    <br>
+                                    <div> 
+                                        <label for="perticipation">Participation in societal_issues</label>
+                                        <br>
+                                        <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                        <label for="knowledge_very_high">Very High</label>
+                                        <br>
+                                        <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                        <label for="knowledge_high">High</label>
+                                        <br>
+                                        <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                        <label for="knowledge_neutral">Neutral</label>
+                                        <br>
+                                        <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                        <label for="knowledge_low">Low</label>
+                                        <br>
+                                        <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                        <label for="knowledge_very_low">Very Low</label>
+                                 </div>
+                                </div>
+
+                                
+                                    <h1>Academic Leadership Ability</h1>
+
+
+                 
+                                            <label for="managerial_{{ candidate.id }}_planning">Planning:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                            
+                                            <br>
+                                            <label for="managerial_{{ candidate.id }}_control_and_monitoring">Control and Monitoring:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                        
+                                          <br>  
+                                            <label for="managerial_{{ candidate.id }}_coordination">Coordination:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+
+                                        <br>
+                                            <label for="managerial_{{ candidate.id }}_team_work">Team Work:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                        
+                                            <label for="managerial_{{ candidate.id }}_delegation">Delegation:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+
+                                            <br>
+                                       
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Evaluation:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                        
+                                            <br>
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Accountability:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+
+                                    <br>
+                                            <label for="managerial_{{ candidate.id }}_evaluation">Experience:</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
+                                            <label for="knowledge_very_high">Very High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
+                                            <label for="knowledge_high">High</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
+                                            <label for="knowledge_neutral">Neutral</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
+                                            <label for="knowledge_low">Low</label>
+                                            <br>
+                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
+                                            <label for="knowledge_very_low">Very Low</label>
+                                        
+   
+                        
+                    </div>
+                </div> -->
             {% endfor %}
             <button type="submit" class="btn btn-primary">Submit Ratings</button>
         </form>
     </div>
 {% endblock %}
+
+

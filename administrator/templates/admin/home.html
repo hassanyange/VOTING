@@ -47,6 +47,21 @@
           </div>
         </div>
         <!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h3>{{ admins_count }}</h3>             
+              <p>Total Admins</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            <a href="{% url 'adminViewAdmins' %}" class="small-box-footer">More Info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
      
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -67,7 +82,7 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <h3>Votes Tally
+          <h3>Votes Tally For Phase 1
             <span class="pull-right">
               <a href="{% url 'printResult' %}" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> Print/Download PDF <i class="fa fa-download"></i></a>
             </span>
