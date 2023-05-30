@@ -18,13 +18,13 @@
           <th>Action</th>
       </thead>
       <tbody>
-    {% for voter in admin %}
+    {% for admin in admins %}
   
     <tr>
-      <td>{{ voter.admin.first_name }}</td>
-      <td>{{ voter.admin.last_name }}</td>
-      <td>{{ voter.admin.email }}</td>
-      <td>{{ voter.phone }}</td>
+      <td>{{ admin.admin.first_name }}</td>
+      <td>{{  admin.admin.last_name }}</td>
+      <td>{{  admin.admin.email }}</td>
+      <td>{{ admin.phone }}</td>
       
       <td>
         <button class='btn btn-primary btn-sm edit btn-flat' data-id='{{ admin.id }}'><i class='fa fa-edit'></i> Edit</button>

@@ -407,13 +407,13 @@ def resetVote(request):
 
 # ADDITIONAL IN MAIN ADMINISTRATOR
 def admins(request):
-    admin = Admin.objects.all()
+    admins = Admin.objects.all()
     userForm = CustomUserForm(request.POST or None)
     adminForm = AdminForm(request.POST or None)
     context = {
         'form1': userForm,
         'form3': adminForm,
-        'admins': admin,
+        'admins': admins,
         'page_title': 'Admin List'
     }
     if request.method == 'POST':
@@ -437,7 +437,7 @@ def view_admin_by_id(request):
         context['code'] = 404
     else:
         context['code'] = 200
-        voter = voter[0]
+        admin = admin[0]
         context['first_name'] = admin.admin.first_name
         context['last_name'] = admin.admin.last_name
         context['phone'] = admin.phone
@@ -453,9 +453,9 @@ def updateAdmin(request):
     try:
         instance = Admin.objects.get(id=request.POST.get('id'))
         user = CustomUserForm(request.POST or None, instance=instance.admin)
-        Admin = AdminForm(request.POST or None, instance=instance)
+        admin = AdminForm(request.POST or None, instance=instance)
         user.save()
-        Admin.save()
+        admin.save()
         messages.success(request, "Admin's bio updated")
     except:
         messages.error(request, "Access To This Resource Denied")
@@ -473,6 +473,6 @@ def deleteAdmin(request):
     except:
         messages.error(request, "Access To This Resource Denied")
 
-    return redirect(reverse('adminViewAdmin'))
+    return redirect(reverse('adminViewAdmins'))
 
 

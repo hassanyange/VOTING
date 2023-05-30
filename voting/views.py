@@ -134,7 +134,7 @@ def verify(request):
 def resend_otp(request):
     """API For SMS
     I used https://www.multitexter.com/ API to send SMS
-    You might not want to use this or this service might not be available in your Country
+    You might not want to use this 
     For quick and easy access, Toggle the SEND_OTP from True to False in settings.py
     """
     user = request.user

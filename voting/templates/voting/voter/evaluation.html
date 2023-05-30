@@ -2,16 +2,28 @@
 
 {% block content %}
     <div class="container">
-        <h1>Evaluation Phase</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {% for candidate in candidates %}
-            <div class="card my-4">
-                <div class="card-header text-center" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-                  <h4 style="margin-right: 100px;">Name: <b>{{ candidate.fullname }}</b> </h4>
-                  <h4>Position:<b>  {{ candidate.position }} </b></h4>
+        <h1 class="text-center">Evaluation Phase</h1>
+     
+        <div class="row ">
+          {% for candidate in candidates %}
+            <div class="col-sm-4 mb-3 mb-sm-0">
+              <div class="card">
+                <img src="{{ candidate.photo.url }}" class="card-img-top rounded-circle img-thumbnail " alt="..." style="object-fit: cover; width: 150px; height: 150px; border-radius: 50%;">
+
+
+                <div class="card-body">
+                  <h5 class="card-title">{{ candidate.fullname }}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Rate this Candidate</a>
                 </div>
-                
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        
+            <button type="submit" class="btn btn-primary ">Submit Ratings</button>
+    </div>
+
                 <!-- <div class="card-body">
                 
                    
@@ -568,10 +580,7 @@
                         
                     </div>
                 </div> -->
-            {% endfor %}
-            <button type="submit" class="btn btn-primary">Submit Ratings</button>
-        </form>
-    </div>
+     
 {% endblock %}
 
 
