@@ -11,7 +11,7 @@ class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         email = self.normalize_email(email)
         user = CustomUser(email=email, **extra_fields)
-        user.password = make_password(password)
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
@@ -40,15 +40,16 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
-    USER_TYPE = ((1, "Admin"), (2, "Voter"))
+    USER_TYPE = (("Admin", "Admin"), ("Voter", "Voter"))
     username = None  # Removed username, using email instead
     email = models.EmailField(unique=True)
-    user_type = models.CharField(default=2, choices=USER_TYPE, max_length=1)
+    user_type = models.CharField(default=2, choices=USER_TYPE, max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = CustomUserManager()
+
 
     def __str__(self):
         return self.last_name + " " + self.first_name

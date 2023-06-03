@@ -21,16 +21,18 @@ def index(request):
 
 
 
-def generate_ballot(display_controls=False):
+def generate_ballot(request , display_controls=False):
     positions = Position.objects.order_by('priority').all()
     output = ""
     candidates_data = ""
     num = 1
+    instruction = ""
+    voter_dep = Voter.objects.get(admin =request.user).department
     # return None
     for position in positions:
         name = position.name
         position_name = slugify(name)
-        candidates = Candidate.objects.filter(position=position)
+        candidates = Candidate.objects.filter(department = voter_dep , position=position)
         for candidate in candidates:
             if position.max_vote > 1:
                 instruction = "You may select up to " + \
@@ -87,7 +89,7 @@ def generate_ballot(display_controls=False):
 
 
 def fetch_ballot(request):
-    output = generate_ballot(display_controls=True)
+    output = generate_ballot(request , display_controls=True)
     return JsonResponse(output, safe=False)
 
 
@@ -239,7 +241,7 @@ def verify_otp(request):
 def show_ballot(request):
     if request.user.voter.voted:
         return redirect('/next-phase')
-    ballot = generate_ballot(display_controls=False)
+    ballot = generate_ballot(request, display_controls=False)
     context = {
         'ballot': ballot
     }

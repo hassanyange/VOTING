@@ -14,5 +14,6 @@ urlpatterns = [
     path('ballot/vote/preview', views.preview_vote, name='preview_vote'),
     path('ballot/vote/submit', views.submit_ballot, name='submit_ballot'),
     path('voter/evaluation',views.evaluation_view, name='evaluation_view'),
+   
     
 ]

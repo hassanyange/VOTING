@@ -3,7 +3,7 @@ from .email_backend import EmailBackend
 from django.contrib import messages
 from .forms import CustomUserForm
 from voting.forms import VoterForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 
 
@@ -65,3 +65,21 @@ def account_logout(request):
     return redirect(reverse("account_login"))
 
 
+# def signin(request):
+   
+#     if request.method == 'POST':
+#         print("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+#         email = request.POST.get('email').lower()
+#         password = request.POST.get('password')
+
+#         user = authenticate(request, username=email, password=password)
+       
+#         if user is not None:
+#             login(request, user)
+           
+#             messages.success(request, 'You have successfully signed in.')
+#             return redirect('voterDashboard')
+#         else:
+#             messages.error(request, 'Invalid email or password.')
+
+#     return render(request, "voting/login.html",)
