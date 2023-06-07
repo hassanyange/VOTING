@@ -4,583 +4,516 @@
     <div class="container">
         <h1 class="text-center">Evaluation Phase</h1>
      
-        <div class="row ">
+        <div class="row">
           {% for candidate in candidates %}
             <div class="col-sm-4 mb-3 mb-sm-0">
               <div class="card">
-                <img src="{{ candidate.photo.url }}" class="card-img-top rounded-circle img-thumbnail " alt="..." style="object-fit: cover; width: 150px; height: 150px; border-radius: 50%;">
-
-
+                <img src="{{ candidate.photo.url }}" class="card-img-top rounded-circle img-thumbnail" alt="..." style="object-fit: cover; width: 150px; height: 150px; border-radius: 50%;">
+        
                 <div class="card-body">
                   <h5 class="card-title">{{ candidate.fullname }}</h5>
-                  <p class="card-text">Make sure you make right choice.Rate accordingly/</p>
-                  <a href="#" class="btn btn-primary">Rate this Candidate</a>
+                  <p class="card-text">Make sure you make the right choice. Rate accordingly.</p>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rateModal{{ candidate.id }}">Rate this Candidate</button>
+                </div>
+              </div>
+            </div> 
+                        <!-- <style>
+                          .modal-content {
+                            background-color: transparent;
+                            border: none;
+                            box-shadow: none;
+                          }
+                        </style> -->
+            <!-- Modal -->
+            <div class="modal fade" id="rateModal{{ candidate.id }}" tabindex="-1" aria-labelledby="rateModalLabel{{ candidate.id }}" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="rateModalLabel{{ candidate.id }}">Rate Candidate</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- leadership section -->
+                     <h1 class="text-center"> LEADERSHIP ABILITY </h1>
+
+                      <div class="row">
+                        
+                                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+
+                                                <h1 class="text-center"> MANAGERIAL ABILITY </h1>
+
+                      
+                        
+                                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+                                              
+                      
+
+                                             <h1 class="text-center"> PUBLIC RELATIONS ABILITY </h1>
+
+                      
+                        
+                                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+                                                 
+                                              
+
+
+                                             
+                                                <h1 class="text-center"> ACADEMIC LEADERSHIP ABILITY </h1>
+
+                      
+                        
+                                              <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+
+                                                 <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <div class="card" style="width: 18rem;">
+                                                    <div class="card-header">
+                                                      Featured
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                      <li class="list-group-item">An item</li>
+                                                      <li class="list-group-item">A second item</li>
+                                                      <li class="list-group-item">A third item</li>
+                                                    </ul>
+                                                  </div>
+                                              </div> 
+                                         
+                                               <div class="col-sm-3 mb-3 mb-sm-0">
+                                                  <div class="card" style="width: 18rem;">
+                                                      <div class="card-header">
+                                                        Featured
+                                                      </div>
+                                                      <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">An item</li>
+                                                        <li class="list-group-item">A second item</li>
+                                                        <li class="list-group-item">A third item</li>
+                                                      </ul>
+                                                    </div>
+                                              </div> 
+                                              
+                      </div>
+
+
+
+
+
+
+
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
                 </div>
               </div>
             </div>
-          {% endfor %}
+         
         </div>
-        
-            <button type="submit" class="btn btn-primary ">Submit Ratings</button>
+         {% endfor %}
+        <div >
+          <button type="submit" class="btn btn-primary ">Submit Ratings</button>
+        </div>
     </div>
 
-                <!-- <div class="card-body">
-                
-                   
-                          <div> 
-                            <h1>Leadership Ability </h1>
-                          
-                             <div>
-                               <label for="knowledge_of_institution">Knowledge of the institution:</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div> 
-                        
-
-
-                          <div>  
-                              <h2>Vision of institution:</h2>   
-                              
-                           <br>
-                           <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                           <label for="knowledge_very_high">Very High</label>
-                           <br>
-                           <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                           <label for="knowledge_high">High</label>
-                           <br>
-                           <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                           <label for="knowledge_neutral">Neutral</label>
-                           <br>
-                           <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                           <label for="knowledge_low">Low</label>
-                           <br>
-                           <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                           <label for="knowledge_very_low">Very Low</label>
-                          </div>
-                          
-                        <div>   
-                            <label for="strategic_ability">Strategic Ability:</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>
-
-                          <br>
-                        
-
-                          <div>  
-                            <label for="creativity_initiative_ability">Creativity, independent thinking, initiative ability:</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>
-
-                           <div> 
-                            <label for="command_of_respect">Command of respect:</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>
-
-                            <div> 
-                                <label for="role_model">Role Model:</label>
-                                <br>
-                                <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                <label for="knowledge_very_high">Very High</label>
-                                <br>
-                                <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                <label for="knowledge_high">High</label>
-                                <br>
-                                <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                <label for="knowledge_neutral">Neutral</label>
-                                <br>
-                                <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                <label for="knowledge_low">Low</label>
-                                <br>
-                                <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                <label for="knowledge_very_low">Very Low</label>
-                              </div> 
-                                  
-
-                                <div> 
-                                    
-                                        <h1>Managerial Ability</h1>
-                                        
-                                            <label for="managerial_{{ candidate.id }}_planning">Planning:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>  
-                                              <br>
-                                          <div>   
-                                            <label for="managerial_{{ candidate.id }}_control_and_monitoring">Control and Monitoring:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>  
-                                          <br> 
-
-                  <div>   </div>
-                                            <label for="managerial_{{ candidate.id }}_coordination">Coordination:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>
-                                  
-                                        <br>
-                                     <div>
-                                            <label for="managerial_{{ candidate.id }}_team_work">Team Work:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                        
-                                            <label for="managerial_{{ candidate.id }}_delegation">Delegation:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>
-                                            <br>
-                                       
-                                          <div> 
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Evaluation:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>
-                                            <br>
-                                            <div> 
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Accountability:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>
-                                    <br>
-                                       <div> 
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Experience:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                          </div>
-                                          <br>
-                                <div> 
-                                         <h1>   Public Relations Ability </h1>
-
-                      
-                                    <br>
-                                              <label for="language">Language:</label>
-                                              <br>
-                                              <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                              <label for="knowledge_very_high">Very High</label>
-                                              <br>
-                                              <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                              <label for="knowledge_high">High</label>
-                                              <br>
-                                              <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                              <label for="knowledge_neutral">Neutral</label>
-                                              <br>
-                                              <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                              <label for="knowledge_low">Low</label>
-                                              <br>
-                                              <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                              <label for="knowledge_very_low">Very Low</label>
-                                            </div>
-                                    <br>
-                                    <div> 
-                                        <label for="personality">Personality:</label>
-                                        <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>    
-                            
-                            <br>
-                            <div>  
-                                                                      <label for="protocol">Protocol:</label>
-                                        <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-
-                                 <br>   
-                                 <div>  
-                                 <div>Respect:</div>      
-                                        <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>
-                                    <br>
-                                    <div> 
-                                        <label for="to sell institution">Ability to sell institution:</label>
-                                        <br>
-                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                            <label for="knowledge_very_high">Very High</label>
-                            <br>
-                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                            <label for="knowledge_high">High</label>
-                            <br>
-                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                            <label for="knowledge_neutral">Neutral</label>
-                            <br>
-                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                            <label for="knowledge_low">Low</label>
-                            <br>
-                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                            <label for="knowledge_very_low">Very Low</label>
-                          </div>
-
-                                    <br>
-                                    <div> 
-                                        <label for="perticipation">Participation in societal_issues</label>
-                                        <br>
-                                        <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                        <label for="knowledge_very_high">Very High</label>
-                                        <br>
-                                        <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                        <label for="knowledge_high">High</label>
-                                        <br>
-                                        <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                        <label for="knowledge_neutral">Neutral</label>
-                                        <br>
-                                        <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                        <label for="knowledge_low">Low</label>
-                                        <br>
-                                        <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                        <label for="knowledge_very_low">Very Low</label>
-                                 </div>
-                                </div>
-
-                                
-                                    <h1>Academic Leadership Ability</h1>
-
-
-                 
-                                            <label for="managerial_{{ candidate.id }}_planning">Planning:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                            
-                                            <br>
-                                            <label for="managerial_{{ candidate.id }}_control_and_monitoring">Control and Monitoring:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                        
-                                          <br>  
-                                            <label for="managerial_{{ candidate.id }}_coordination">Coordination:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-
-                                        <br>
-                                            <label for="managerial_{{ candidate.id }}_team_work">Team Work:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                        
-                                            <label for="managerial_{{ candidate.id }}_delegation">Delegation:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-
-                                            <br>
-                                       
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Evaluation:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                        
-                                            <br>
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Accountability:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-
-                                    <br>
-                                            <label for="managerial_{{ candidate.id }}_evaluation">Experience:</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_high" name="knowledge_of_institution" value="very high" required>
-                                            <label for="knowledge_very_high">Very High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_high" name="knowledge_of_institution" value="high" required>
-                                            <label for="knowledge_high">High</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_neutral" name="knowledge_of_institution" value="neutral" required>
-                                            <label for="knowledge_neutral">Neutral</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_low" name="knowledge_of_institution" value="low" required>
-                                            <label for="knowledge_low">Low</label>
-                                            <br>
-                                            <input type="radio" id="knowledge_very_low" name="knowledge_of_institution" value="very low" required>
-                                            <label for="knowledge_very_low">Very Low</label>
-                                        
+    
+     
+   
+   
+   
+   <!-- GRADES -->
+<!-- Very High
+High
+Neutral
+Low
+Very Low
+                                         -->
    
                         
-                    </div>
-                </div> -->
+                            
      
 {% endblock %}
-
 

@@ -106,6 +106,10 @@ def generate_otp():
 
 def dashboard(request):
     user = request.user
+    try:
+        voter = user.voter  # Retrieve the associated Voter object
+    except Voter.DoesNotExist:
+        return redirect(reverse('voterVerify'))
     # * Check if this voter has been verified
     if user.voter.otp is None or user.voter.verified == False:
         if not settings.SEND_OTP:
@@ -416,23 +420,12 @@ def submit_ballot(request):
 
    
 from .models import Candidate
-from .models import EvaluationForm
 
 
 def evaluation_view(request):
     candidates = Candidate.objects.all()
-    if request.method == 'POST':
-        form = EvaluationForm(request.POST)
-        if form.is_valid():
-            # Process form data and save to database
-            for candidate in candidates:
-                leadership_rating = form.cleaned_data[f'leadership_{candidate.id}']
-                managerial_rating = form.cleaned_data[f'managerial_{candidate.id}']
-                public_relations_rating = form.cleaned_data[f'public_relations_{candidate.id}']
-                academic_leadership_rating = form.cleaned_data[f'academic_leadership_{candidate.id}']
-                # Do something with ratings (e.g. save to CandidateRating model)
-            return HttpResponseRedirect('/thank-you/')
-    else:
-        form = EvaluationForm(candidates)
-    context = {'candidates': candidates, 'form': form}
+    context ={
+        'candidates': candidates
+    }
+  
     return render(request, 'voting/voter/evaluation.html',context)

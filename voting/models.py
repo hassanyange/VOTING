@@ -73,13 +73,19 @@ class Votes(models.Model):
     department = models.ForeignKey(Department, null=True, on_delete=models.CASCADE)
 
 
-class EvaluationForm(forms.Form):
-    def __init__(self, candidates, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for candidate in candidates:
-            prefix = f'candidate_{candidate.id}'
-            self.fields[f'{prefix}_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
-            self.fields[f'{prefix}_managerial'] = forms.IntegerField(min_value=1, max_value=10, required=True)
-            self.fields[f'{prefix}_public_relations'] = forms.IntegerField(min_value=1, max_value=10, required=True)
-            self.fields[f'{prefix}_academic_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
-            department = models.ForeignKey(Department, on_delete=models.CASCADE)
+# class EvaluationForm(forms.Form):
+#     def __init__(self, candidates, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         for candidate in candidates:
+#             prefix = f'candidate_{candidate.id}'
+#             self.fields[f'{prefix}_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+#             self.fields[f'{prefix}_managerial'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+#             self.fields[f'{prefix}_public_relations'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+#             self.fields[f'{prefix}_academic_leadership'] = forms.IntegerField(min_value=1, max_value=10, required=True)
+#             department = models.ForeignKey(Department, on_delete=models.CASCADE)
+# class Evaluation(models.Model):
+#     leadership_ability = models.IntegerField(null=True)
+#     managerial_ability = models.IntegerField(null=True)
+#     publicRelations_ability = models.IntegerField(null=True)
+#     academic_ability = models.IntegerField(null=True)
+#     department = models.ForeignKey(Department, on_delete=models.CASCADE)
